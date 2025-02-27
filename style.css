@@ -19,23 +19,23 @@
 }
 
 .dark-theme {
-    --bg-color: #1a1a2e;
-    --text-color: #e6e6e6;
-    --card-bg: #16213e;
-    --primary-color: #4671b4;
-    --primary-hover: #5689d0;
-    --success-color: #2ecc71;
-    --warning-color: #f39c12;
-    --danger-color: #e74c3c;
-    --tab-bg: #24385b;
-    --tab-text: #e6e6e6;
-    --tab-hover: #32506f;
-    --code-bg: #0f3460;
-    --code-text: #e6e6e6;
-    --shadow: rgba(0, 0, 0, 0.3);
-    --header-color: #e6e6e6;
-    --disabled-bg: #6a7a7b;
-    --content-bg: #24385b;
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --primary-color: #1700e2;
+    --primary-hover: #1100ad;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --danger-color: #F44336;
+    --tab-bg: #3d3d3d;
+    --tab-text: #ffffff;
+    --tab-hover: #505050;
+    --code-bg: #212121;
+    --code-text: #bdbdbd;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --header-color: #ffffff;
+    --disabled-bg: #616161;
+    --content-bg: #363636;
 }
 
 * {
@@ -43,7 +43,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    transition: 
+        background-color 0.5s ease-in-out,
+        color 0.5s ease-in-out,
+        border-color 0.5s ease-in-out,
+        box-shadow 0.5s ease-in-out;
 }
 
 body {
@@ -143,6 +147,9 @@ h1 {
     position: relative;
     padding: 0;
     overflow: hidden;
+    border: 2px solid var(--tab-bg);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .theme-toggle-label .fa-sun,
@@ -151,34 +158,63 @@ h1 {
     font-size: 15px;
     top: 50%;
     transform: translateY(-50%);
+    transition: all 0.3s ease;
 }
 
 .theme-toggle-label .fa-sun {
     color: #f1c40f;
-    left: 8px;
+    left: 6px;
     z-index: 1;
+    opacity: 1;
 }
 
 .theme-toggle-label .fa-moon {
-    color: #34495e;
-    right: 8px;
+    color: #f8f9fa;
+    right: 6px;
     z-index: 1;
+    opacity: 0.7;
 }
 
 .theme-toggle-ball {
-    background: var(--primary-color);
+    background: var(--bg-color);
     border-radius: 50%;
     position: absolute;
     top: 2px;
     left: 2px;
-    height: 26px;
-    width: 26px;
-    transition: transform 0.3s;
+    height: 22px;
+    width: 22px;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#theme-toggle-checkbox:checked + .theme-toggle-label {
+    background-color: #1a237e;
+    border-color: #1a237e;
+}
+
+#theme-toggle-checkbox:checked + .theme-toggle-label .fa-sun {
+    opacity: 0.7;
+}
+
+#theme-toggle-checkbox:checked + .theme-toggle-label .fa-moon {
+    opacity: 1;
+    color: #e1e1e1;
 }
 
 #theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-ball {
     transform: translateX(30px);
+    background: #3949ab;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Добавляем эффект при наведении */
+.theme-toggle-label:hover {
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.theme-toggle-label:hover .theme-toggle-ball {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 .controls, .algorithms {
@@ -258,6 +294,8 @@ input[type="range"]::-webkit-slider-thumb {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    position: relative;
+    overflow: hidden;
 }
 
 .bars-container {
@@ -275,15 +313,18 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .bar.current {
-    background-color: var(--danger-color);
+    background-color: var(--warning-color);
+    box-shadow: 0 0 5px var(--warning-color);
 }
 
 .bar.sorted {
     background-color: var(--success-color);
+    box-shadow: 0 0 5px var(--success-color);
 }
 
 .bar.compare {
-    background-color: var(--warning-color);
+    background-color: var(--danger-color);
+    box-shadow: 0 0 5px var(--danger-color);
 }
 
 /* Стили для секции с примерами кода */
@@ -401,4 +442,84 @@ input[type="range"]::-webkit-slider-thumb {
         align-items: center;
         flex-wrap: wrap;
     }
+}
+
+/* Стили для индикации состояния сортировки */
+.visualization-container.sorting-active {
+    position: relative;
+    box-shadow: 0 0 10px var(--primary-color);
+    border: 2px solid var(--primary-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+    }
+}
+
+/* Стили для статуса сортировки */
+.sorting-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sorting-status.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для активных кнопок алгоритмов */
+.algorithms button.active {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Улучшенные стили для заблокированных кнопок */
+button:disabled {
+    background-color: var(--disabled-bg) !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+    transform: scale(1) !important;
+    box-shadow: none !important;
+    opacity: 0.7;
+}
+
+/* Стили для индикации изменения скорости во время сортировки */
+.speed-slider-active {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 2px var(--primary-color);
+    }
+    to {
+        box-shadow: 0 0 8px var(--primary-color);
+    }
+}
+
+/* Позволяем ползунку скорости быть активным во время сортировки */
+input[type="range"]#speed:not(:disabled) {
+    cursor: pointer;
+    opacity: 1;
 } 
