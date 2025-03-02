@@ -10,7 +10,7 @@ export class LanguageManager {
     /**
      * @param {string} defaultLanguage - язык по умолчанию
      */
-    constructor(defaultLanguage = 'ru') {
+    constructor(defaultLanguage = 'en') {
         this.currentLanguage = localStorage.getItem('interface-language') || defaultLanguage;
         this.codeDisplayManager = null;
     }

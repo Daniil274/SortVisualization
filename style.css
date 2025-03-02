@@ -398,15 +398,30 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: transparent;
     color: var(--code-text);
     border: 1px solid var(--code-text);
-    padding: 4px 8px;
+    padding: 6px 12px;
     font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
 }
 
 .copy-button:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.copy-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.copy-button i {
+    font-size: 14px;
 }
 
 .code-display {
@@ -522,4 +537,155 @@ button:disabled {
 input[type="range"]#speed:not(:disabled) {
     cursor: pointer;
     opacity: 1;
+}
+
+/* Стили для комментариев в коде */
+.hljs-comment {
+    color: #6A9955 !important; /* Зеленый для комментариев как в VS Code */
+    font-style: italic;
+}
+
+/* Улучшенная подсветка синтаксиса для темной темы (VS Code Dark+) */
+.dark-theme .hljs-keyword {
+    color: #569CD6 !important; /* Светло-синий для ключевых слов */
+    font-weight: bold;
+}
+
+.dark-theme .hljs-string {
+    color: #CE9178 !important; /* Оранжево-коричневый для строк */
+}
+
+.dark-theme .hljs-number {
+    color: #B5CEA8 !important; /* Светло-зеленый для чисел */
+}
+
+.dark-theme .hljs-function {
+    color: #DCDCAA !important; /* Желтоватый для функций */
+}
+
+.dark-theme .hljs-title {
+    color: #DCDCAA !important; /* Желтоватый для имен функций */
+}
+
+.dark-theme .hljs-params {
+    color: #9CDCFE !important; /* Светло-голубой для параметров */
+}
+
+.dark-theme .hljs-built_in {
+    color: #4EC9B0 !important; /* Бирюзовый для встроенных объектов */
+}
+
+.dark-theme .hljs-literal {
+    color: #569CD6 !important; /* Светло-синий для литералов */
+}
+
+.dark-theme .hljs-operator {
+    color: #D4D4D4 !important; /* Светло-серый для операторов */
+}
+
+.dark-theme .hljs-type {
+    color: #4EC9B0 !important; /* Бирюзовый для типов */
+}
+
+.dark-theme .hljs-variable {
+    color: #9CDCFE !important; /* Светло-голубой для переменных */
+}
+
+/* Улучшенная подсветка синтаксиса для светлой темы (VS Code Light+) */
+.light-theme .hljs-keyword {
+    color: #0000FF !important; /* Синий для ключевых слов */
+    font-weight: bold;
+}
+
+.light-theme .hljs-string {
+    color: #A31515 !important; /* Темно-красный для строк */
+}
+
+.light-theme .hljs-number {
+    color: #098658 !important; /* Зеленый для чисел */
+}
+
+.light-theme .hljs-function {
+    color: #795E26 !important; /* Коричневый для функций */
+}
+
+.light-theme .hljs-title {
+    color: #795E26 !important; /* Коричневый для имен функций */
+}
+
+.light-theme .hljs-params {
+    color: #001080 !important; /* Темно-синий для параметров */
+}
+
+.light-theme .hljs-built_in {
+    color: #0000FF !important; /* Синий для встроенных функций (меньше насыщенности) */
+}
+
+.light-theme .hljs-literal {
+    color: #0000FF !important; /* Синий для литералов */
+}
+
+.light-theme .hljs-operator {
+    color: #000000 !important; /* Черный для операторов */
+}
+
+.light-theme .hljs-type {
+    color: #267F99 !important; /* Сине-зеленый для типов */
+}
+
+.light-theme .hljs-variable {
+    color: #001080 !important; /* Темно-синий для переменных */
+}
+
+/* Стили для C/C++ специфичных элементов */
+.hljs-preprocessor,
+.hljs-pragma {
+    color: #808080 !important; /* Серый для препроцессора */
+}
+
+.dark-theme .hljs-preprocessor,
+.dark-theme .hljs-pragma {
+    color: #BD63C5 !important; /* Фиолетовый для препроцессора в темной теме */
+}
+
+/* Общие стили для обеих тем */
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+/* Стили для светлой темы кода */
+.light-theme .code-container {
+    background-color: var(--content-bg);
+}
+
+.light-theme .code-display {
+    color: #333;
+}
+
+.light-theme .code-header {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.light-theme .copy-button {
+    color: #333;
+    border: 1px solid #333;
+}
+
+/* Изменяем цвет фона для кода в светлой теме */
+.light-theme .code-container pre {
+    background-color: var(--content-bg);
+}
+
+/* Переопределяем цвета темной темы */
+.dark-theme .code-container {
+    background-color: var(--code-bg);
+}
+
+.dark-theme .code-display {
+    color: var(--code-text);
 } 
