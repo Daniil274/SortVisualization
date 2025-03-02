@@ -43,6 +43,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Новый класс для контролируемых переходов */
+.transitions-enabled * {
     transition: 
         background-color 0.5s ease-in-out,
         color 0.5s ease-in-out,
