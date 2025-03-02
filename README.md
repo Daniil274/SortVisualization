@@ -1,90 +1,92 @@
-# Визуализация алгоритмов сортировки
+# Visualization of Sorting Algorithms
 
-Интерактивное веб-приложение для визуализации процесса работы различных алгоритмов сортировки. Проект помогает понять, как работают алгоритмы сортировки на практике, наглядно демонстрируя каждый шаг сортировки.
+An interactive web application for visualizing how different sorting algorithms work. This project helps to understand sorting algorithms in practice by clearly demonstrating each step of the sorting process.
 
-![Скриншот приложения](screenshot.png)
+![Application screenshot](screenshot.png)
 
-## Содержание
-- [Реализованные алгоритмы](#реализованные-алгоритмы-сортировки)
-- [Функциональность](#функциональность)
-- [Установка и запуск](#установка-и-запуск)
-- [Как использовать](#как-использовать)
-- [Технологии](#технологии)
-- [Преимущества проекта](#преимущества-проекта)
-- [Автор](#автор)
+**[View Live Demo](https://daniil274.github.io/SortVisualization/)**
 
-## Реализованные алгоритмы сортировки
+## Contents
+- [Implemented Algorithms](#implemented-sorting-algorithms)
+- [Features](#features)
+- [Installation and Launch](#installation-and-launch)
+- [How to Use](#how-to-use)
+- [Technologies](#technologies)
+- [Project Benefits](#project-benefits)
 
-1. **Сортировка пузырьком (Bubble Sort)** - простой алгоритм сортировки, который многократно проходит по массиву, сравнивая соседние элементы и меняя их местами, если они расположены в неправильном порядке.
+## Implemented Sorting Algorithms
 
-2. **Сортировка выбором (Selection Sort)** - алгоритм сортировки, который выбирает наименьший элемент из несортированной части и помещает его в конец отсортированной части.
+1. **Bubble Sort** - a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order.
 
-3. **Сортировка вставками (Insertion Sort)** - алгоритм сортировки, который строит отсортированный массив по одному элементу за раз, вставляя каждый новый элемент в правильное место.
+2. **Selection Sort** - a sorting algorithm that selects the smallest element from the unsorted portion and places it at the end of the sorted portion.
 
-4. **Быстрая сортировка (Quick Sort)** - эффективный алгоритм сортировки, основанный на стратегии "разделяй и властвуй", который выбирает опорный элемент и разделяет массив на подмассивы элементов меньше и больше опорного.
+3. **Insertion Sort** - a sorting algorithm that builds a sorted array one element at a time, inserting each new element in its correct position.
 
-5. **Сортировка слиянием (Merge Sort)** - эффективный, стабильный алгоритм сортировки, основанный на стратегии "разделяй и властвуй", который делит массив пополам, сортирует обе половины и затем объединяет их.
+4. **Quick Sort** - an efficient sorting algorithm based on the "divide and conquer" strategy, which selects a pivot element and partitions the array into sub-arrays of elements smaller and larger than the pivot.
 
-## Функциональность
+5. **Merge Sort** - an efficient, stable sorting algorithm based on the "divide and conquer" strategy, which divides the array in half, sorts both halves, and then merges them.
 
-- Генерация случайных массивов для сортировки
-- Настройка размера массива (количества элементов)
-- Регулировка скорости визуализации (от очень медленной до быстрой)
-- Защита от некорректного поведения (невозможно запустить сортировку на уже отсортированном массиве)
-- Переключение между светлой и темной темой
-- Примеры реализации алгоритмов на нескольких языках программирования (C++, C, Python, JavaScript)
-- Возможность копирования примеров кода
-- Цветовая индикация текущего состояния элементов:
-  - Синий - обычный элемент
-  - Красный - текущий обрабатываемый элемент
-  - Желтый - элемент, с которым сравнивается текущий
-  - Зеленый - элемент, который находится на своей конечной позиции
+6. **Shell Sort** - an improved version of insertion sort that compares elements at a certain distance from each other and gradually reduces this distance.
 
-## Установка и запуск
+## Features
 
-1. Клонируйте репозиторий:
+- Generation of random arrays for sorting
+- Customizable array size (number of elements)
+- Adjustable visualization speed (from very slow to fast)
+- Protection against incorrect behavior (impossible to run sorting on an already sorted array)
+- Toggle between light and dark themes
+- Multilingual interface (Russian, English, German)
+- Algorithm implementation examples in several programming languages (C++, C, Python, JavaScript, and pseudocode)
+- Ability to copy code examples
+- Enable/disable comments in code examples
+- Color indication of current element states:
+  - Blue - default element
+  - Red - current element being processed
+  - Yellow - element being compared with the current one
+  - Green - element that is in its final position
+
+## Installation and Launch
+
+1. Clone the repository:
    ```
-   git clone https://github.com/username/sorting-visualizer.git
+   git clone https://github.com/Daniil274/SortVisualization.git
    ```
-2. Перейдите в папку проекта:
+2. Navigate to the project folder:
    ```
-   cd sorting-visualizer
+   cd SortVisualization
    ```
-3. Откройте файл `index.html` в вашем браузере
+3. Open the `index.html` file in your browser
 
-Приложение не требует установки дополнительных библиотек или сборки.
+The application does not require additional libraries or building.
 
-## Как использовать
+**You can also access the live version directly at [https://daniil274.github.io/SortVisualization/](https://daniil274.github.io/SortVisualization/)**
 
-1. Откройте файл `index.html` в вашем браузере
-2. Используйте ползунок "Размер массива" для настройки количества элементов
-3. Отрегулируйте скорость анимации с помощью ползунка "Скорость"
-4. Нажмите кнопку "Создать новый массив" для генерации нового набора данных
-5. Выберите один из алгоритмов сортировки, нажав на соответствующую кнопку
-6. Наблюдайте за процессом сортировки в реальном времени
-7. Изучайте примеры кода для разных языков программирования в нижней части страницы
+## How to Use
 
-## Технологии
+1. Open the `index.html` file in your browser (or visit the [live demo](https://daniil274.github.io/SortVisualization/))
+2. Use the "Array Size" slider to adjust the number of elements
+3. Adjust the animation speed using the "Speed" slider
+4. Click the "Generate New Array" button to create a new data set
+5. Select one of the sorting algorithms by clicking on the corresponding button
+6. Watch the sorting process in real-time
+7. Study the code examples for different programming languages at the bottom of the page
+8. Switch theme or interface language if needed
+
+## Technologies
 
 - HTML5
 - CSS3
 - JavaScript (ES6+)
-- Использование асинхронных функций (async/await) для управления анимацией
-- Highlight.js для подсветки синтаксиса кода
-- Font Awesome для иконок
+- Asynchronous functions (async/await) for animation control
+- Highlight.js for code syntax highlighting
+- Font Awesome for icons
+- Modular JavaScript architecture
 
-## Преимущества проекта
+## Project Benefits
 
-- Наглядная демонстрация работы алгоритмов сортировки
-- Интерактивный интерфейс для экспериментов с различными параметрами
-- Простой и понятный код, который можно использовать в образовательных целях
-- Адаптивный дизайн для работы на различных устройствах
-- Поддержка темной и светлой темы
-
-## Автор
-
-[Ваше имя] - [ваш email или другая контактная информация]
-
-## Лицензия
-
-Этот проект распространяется под лицензией MIT. Подробности смотрите в файле [LICENSE](LICENSE). 
+- Visual demonstration of sorting algorithms in action
+- Interactive interface for experimenting with various parameters
+- Simple and understandable code that can be used for educational purposes
+- Responsive design for use on various devices
+- Support for multiple interface languages
+- Support for dark and light themes 
