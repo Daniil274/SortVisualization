@@ -3,6 +3,7 @@
  */
 import { getAnimationSpeed } from '../utils/animationSpeed.js';
 import { setCurrentSpeedValue } from '../utils/delay.js';
+import { translations } from '../localization/translations.js';
 
 /**
  * Класс для управления элементами управления
@@ -143,6 +144,10 @@ export class ControlsManager {
      * @param {string} algorithm - текущий алгоритм
      */
     showSortingStatus(status, algorithm) {
+        // Получаем текущий язык интерфейса
+        const currentLanguage = localStorage.getItem('interface-language') || 'ru';
+        const trans = translations[currentLanguage];
+        
         // Если у нас нет элемента статуса, создаем его
         let statusElement = document.querySelector('.sorting-status');
         if (!statusElement) {
@@ -151,12 +156,16 @@ export class ControlsManager {
             document.querySelector('.visualization-container').appendChild(statusElement);
         }
         
+        // Получаем название алгоритма на текущем языке
+        const algorithmName = this.getAlgorithmName(algorithm, currentLanguage);
+        
         // Устанавливаем текст статуса
         if (status === 'start') {
-            statusElement.textContent = `Запущена ${this.getAlgorithmName(algorithm)}...`;
+            // Используем шаблонные строки для подстановки названия алгоритма
+            statusElement.textContent = trans.sortingStarted.replace('{algorithm}', algorithmName);
             statusElement.classList.add('active');
         } else if (status === 'complete') {
-            statusElement.textContent = `${this.getAlgorithmName(algorithm)} завершена`;
+            statusElement.textContent = trans.sortingCompleted.replace('{algorithm}', algorithmName);
             
             // Удаляем статус через 3 секунды
             setTimeout(() => {
@@ -166,19 +175,18 @@ export class ControlsManager {
     }
     
     /**
-     * Возвращает название алгоритма на русском
+     * Возвращает название алгоритма на выбранном языке
      * @param {string} algorithmId - идентификатор алгоритма
+     * @param {string} language - код языка
      * @returns {string} - название алгоритма
      */
-    getAlgorithmName(algorithmId) {
-        const names = {
-            'bubble': 'Сортировка пузырьком',
-            'selection': 'Сортировка выбором',
-            'insertion': 'Сортировка вставками',
-            'quick': 'Быстрая сортировка',
-            'merge': 'Сортировка слиянием',
-            'shell': 'Сортировка Шелла'
-        };
-        return names[algorithmId] || algorithmId;
+    getAlgorithmName(algorithmId, language = 'ru') {
+        // Используем названия алгоритмов из переводов кнопок
+        const trans = translations[language];
+        if (!trans) return algorithmId;
+        
+        // Преобразуем id алгоритма в название кнопки
+        const buttonKey = `${algorithmId}Btn`;
+        return trans[buttonKey] || algorithmId;
     }
 } 

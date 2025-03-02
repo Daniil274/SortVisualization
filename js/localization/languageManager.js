@@ -91,6 +91,12 @@ export class LanguageManager {
         if (copyButton && !copyButton.innerHTML.includes('fa-check')) {
             copyButton.innerHTML = `<i class="fas fa-copy"></i> ${trans.copyBtn}`;
         }
+        
+        // Обновление текстов вкладок языков программирования
+        const pseudocodeBtn = document.querySelector('.tab-button[data-lang="pseudocode"]');
+        if (pseudocodeBtn) {
+            pseudocodeBtn.textContent = trans.pseudocodeBtn;
+        }
     }
     
     /**

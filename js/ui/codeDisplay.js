@@ -3,6 +3,7 @@
  */
 import { algorithmCodes, algorithmCodesNoComments } from '../data/algorithmCodes.js';
 import { translations } from '../localization/translations.js';
+import { pseudocode } from '../data/pseudocode.js';
 
 /**
  * Класс для управления отображением кода алгоритмов
@@ -74,15 +75,29 @@ export class CodeDisplayManager {
      */
     displayAlgorithmCode() {
         const currentInterfaceLanguage = localStorage.getItem('interface-language') || 'ru';
-        const codeToShow = this.showComments 
-            ? algorithmCodes[this.currentAlgorithm][this.currentLanguage][currentInterfaceLanguage] 
-            : algorithmCodesNoComments[this.currentAlgorithm][this.currentLanguage];
-            
-        this.codeDisplay.textContent = codeToShow;
         
-        // Добавляем подсветку синтаксиса после обновления содержимого
-        if (window.hljs) {
-            window.hljs.highlightElement(this.codeDisplay);
+        // Добавляем проверку для псевдокода
+        if (this.currentLanguage === 'pseudocode') {
+            const pseudocodeToShow = pseudocode[this.currentAlgorithm][currentInterfaceLanguage];
+            this.codeDisplay.textContent = pseudocodeToShow;
+            
+            // Для псевдокода используем специальную настройку подсветки
+            if (window.hljs) {
+                this.codeDisplay.className = 'code-display language-plaintext';
+                window.hljs.highlightElement(this.codeDisplay);
+            }
+        } else {
+            const codeToShow = this.showComments 
+                ? algorithmCodes[this.currentAlgorithm][this.currentLanguage][currentInterfaceLanguage] 
+                : algorithmCodesNoComments[this.currentAlgorithm][this.currentLanguage];
+                
+            this.codeDisplay.textContent = codeToShow;
+            
+            // Добавляем подсветку синтаксиса после обновления содержимого
+            if (window.hljs) {
+                this.codeDisplay.className = 'code-display language-' + this.currentLanguage;
+                window.hljs.highlightElement(this.codeDisplay);
+            }
         }
         
         // Обновляем метку языка
@@ -195,11 +210,16 @@ export class CodeDisplayManager {
      * @returns {string} - название языка
      */
     getLanguageLabel(langCode) {
+        // Получаем текущий язык интерфейса внутри метода
+        const currentInterfaceLanguage = localStorage.getItem('interface-language') || 'ru';
+        
         const labels = {
             'cpp': 'C++',
             'c': 'C',
             'python': 'Python',
-            'javascript': 'JavaScript'
+            'javascript': 'JavaScript',
+            'pseudocode': currentInterfaceLanguage === 'ru' ? 'Псевдокод' : 
+                          currentInterfaceLanguage === 'de' ? 'Pseudocode' : 'Pseudocode'
         };
         return labels[langCode] || langCode;
     }

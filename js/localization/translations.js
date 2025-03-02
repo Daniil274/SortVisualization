@@ -21,7 +21,10 @@ export const translations = {
         'commentsLabel': 'Комментарии',
         'codeDefault': '// Здесь будет отображаться код алгоритма',
         'copyBtn': 'Копировать',
-        'copiedBtn': 'Скопировано'
+        'copiedBtn': 'Скопировано',
+        'pseudocodeBtn': 'Псевдокод',
+        'sortingStarted': 'Запущена {algorithm}...',
+        'sortingCompleted': '{algorithm} завершена'
     },
     'en': {
         'title': 'Sorting Algorithms Visualization',
@@ -38,7 +41,10 @@ export const translations = {
         'commentsLabel': 'Comments',
         'codeDefault': '// Algorithm code will be displayed here',
         'copyBtn': 'Copy',
-        'copiedBtn': 'Copied'
+        'copiedBtn': 'Copied',
+        'pseudocodeBtn': 'Pseudocode',
+        'sortingStarted': '{algorithm} started...',
+        'sortingCompleted': '{algorithm} completed'
     },
     'de': {
         'title': 'Visualisierung von Sortieralgorithmen',
@@ -55,6 +61,9 @@ export const translations = {
         'commentsLabel': 'Kommentare',
         'codeDefault': '// Hier wird der Algorithmuscode angezeigt',
         'copyBtn': 'Kopieren',
-        'copiedBtn': 'Kopiert'
+        'copiedBtn': 'Kopiert',
+        'pseudocodeBtn': 'Pseudocode',
+        'sortingStarted': '{algorithm} gestartet...',
+        'sortingCompleted': '{algorithm} abgeschlossen'
     }
 }; 
